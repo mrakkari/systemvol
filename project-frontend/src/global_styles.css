@@ -1,0 +1,113 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 m-0 p-0;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .input-field {
+    @apply block w-full px-4 py-3 border-0 rounded-lg bg-white shadow-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+  }
+
+  .nav-tab {
+    @apply flex items-center px-6 py-3 rounded-full text-white font-medium transition-all duration-200 cursor-pointer;
+  }
+
+  .nav-tab.active {
+    @apply bg-blue-600;
+  }
+
+  .nav-tab.inactive {
+    @apply bg-gray-700 hover:bg-gray-600;
+  }
+
+  .search-input-group {
+    @apply bg-white rounded-lg shadow-sm border-0 overflow-hidden;
+  }
+
+  .search-input {
+    @apply w-full px-4 py-4 border-0 focus:outline-none focus:ring-0 text-gray-900 placeholder-gray-500;
+  }
+
+  .search-input-label {
+    @apply text-xs font-medium text-gray-600 mb-1 px-4 pt-2;
+  }
+
+  .swap-button {
+    @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-gray-200 rounded-full p-2 hover:border-blue-500 transition-colors duration-200 z-10;
+  }
+}
+
+/* Custom calendar styles */
+.calendar-container {
+  @apply bg-white rounded-xl shadow-lg border border-gray-200 p-6 max-w-sm;
+}
+
+.calendar-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.calendar-nav-btn {
+  @apply p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-600 hover:text-gray-800;
+}
+
+.calendar-title {
+  @apply text-lg font-semibold text-gray-800;
+}
+
+.calendar-grid {
+  @apply grid grid-cols-7 gap-1;
+}
+
+.calendar-day-header {
+  @apply text-xs font-medium text-gray-500 text-center py-2;
+}
+
+.calendar-day {
+  @apply w-8 h-8 flex items-center justify-center text-sm rounded-full cursor-pointer transition-all duration-200;
+}
+
+.calendar-day:hover {
+  @apply bg-blue-100;
+}
+
+.calendar-day.today {
+  @apply bg-blue-100 text-blue-700 font-medium;
+}
+
+.calendar-day.selected {
+  @apply bg-blue-600 text-white font-medium;
+}
+
+.calendar-day.other-month {
+  @apply text-gray-400;
+}
+
+.calendar-day.disabled {
+  @apply text-gray-300 cursor-not-allowed;
+}
+
+.calendar-day.disabled:hover {
+  @apply bg-transparent;
+}

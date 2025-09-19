@@ -1,0 +1,53 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:sqlite:flight_reservation.db
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+  properties:
+    hibernate:
+      format_sql: true
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterWrite=10m
+
+logging:
+  level:
+    com.flight.reservation: DEBUG
+    org.springframework.cache: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+      show-sql: true
+  properties:
+    hibernate:
+      format_sql: true
+  cache:
+    type: none
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    com.flight.reservation: INFO
+    org.springframework.cache: INFO

@@ -1,0 +1,24 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button class="nav-button" (click)="prevMonth()">&lt;</button>
+    <span class="month-year">{{ months[currentDate.getMonth()] }} {{ currentDate.getFullYear() }}</span>
+    <button class="nav-button" (click)="nextMonth()">&gt;</button>
+  </div>
+  <div class="calendar-grid">
+    <div class="day-header" *ngFor="let day of daysOfWeek">{{ day }}</div>
+    <div class="day-cell" 
+         *ngFor="let day of days" 
+         (click)="selectDate(day)"
+         [ngClass]="{
+           'selected': isSelected(day), 
+           'today': isToday(day) && !isSelected(day),
+           'empty': !isValidDay(day),
+           'clickable': isValidDay(day)
+         }">
+      <span *ngIf="isValidDay(day)">{{ day?.getDate() }}</span>
+    </div>
+  </div>
+  <div class="calendar-footer">
+    <button class="cancel-button" (click)="cancel()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="flight-card">
+  <div class="flight-info">
+    <!-- Departure -->
+    <div class="city-info">
+      <div class="city-name">{{ flight.villeDepart }}</div>
+      <div class="time">{{ formatTime(flight.heureDepart) }}</div>
+    </div>
+
+    <!-- Flight Path -->
+    <div class="flight-path">
+      <div class="duration">{{ formatDuration(flight.tempsTrajet) }}</div>
+      <div class="path-line">
+        <div class="line"></div>
+        <div class="plane-icon">✈</div>
+      </div>
+      <div class="flight-type">Direct</div>
+    </div>
+
+    <!-- Arrival -->
+    <div class="city-info">
+      <div class="city-name">{{ flight.villeArrivee }}</div>
+      <div class="time">{{ formatTime(flight.heureArrivee) }}</div>
+    </div>
+  </div>
+
+  <!-- Price and Reserve Button -->
+  <div class="price-reserve">
+    <div class="price">{{ flight.prix }} €</div>
+    <button
+      (click)="onReserve()"
+      class="reserve-btn"
+    >
+      Réserver
+    </button>
+  </div>
+</div>
